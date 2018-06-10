@@ -24,31 +24,28 @@ problemsList = {
     Problem(4,'Dividir')
 }
 def inserIntoTeams():
-
     for team in teamsList:
        collectionTeams.insert(team.toDBCollection())
-
     print("Information was saved")
 
 def insertIntoProblems():
     for problem in problemsList:
         collectionProblem.insert(problem.toDBCollection())
-
     print("Information was saved")
+
 def printCollection():
     data = collectionTeams.find()
     print("Teams quantity: ",data.count())
     if data.count() > 0:
         for team in data:
-            print (team['description'], "\n id: " + str(team['id']),"ObjectID: " + str(team['_id']) + "\n")
+            print(team['description'], "\n id: " + str(team['id']),"ObjectID: " + str(team['_id']) + "\n")
     else:
         print("The collection is empty!")
 
 def printTeamsDESCENDING():
-
     result = collectionTeams.find().sort("id", pymongo.DESCENDING)
     for team in result:
-        print (team['description'], "\n id: " + str(team['id']),"ObjectID: " + str(team['_id']) + "\n")
+        print(team['description'], "\n id: " + str(team['id']),"ObjectID: " + str(team['_id']) + "\n")
 
 
 def printProblems():
